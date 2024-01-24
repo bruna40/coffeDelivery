@@ -1,5 +1,5 @@
-import expresso from '../../assets/coffeImagens/expresso.png'
-import leite from '../../assets/coffeImagens/cafe-com-Leite.png'
+import expresso from '../../assets/expresso.png'
+import leite from '../../assets/cafe-com-Leite.png'
 import { Trash } from '@phosphor-icons/react'
 import {
   ContainerInfo,
