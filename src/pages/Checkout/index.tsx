@@ -34,39 +34,34 @@ export function Checkout() {
             />
             <Input
               placeholder="Rua"
-              type="number"
               containerProps={{ style: { gridArea: 'street' } }}
-              {...register('cep', { valueAsNumber: true })}
+              {...register('street')}
             />
             <Input
               placeholder="Número"
-              type="number"
               containerProps={{ style: { gridArea: 'number' } }}
-              {...register('cep', { valueAsNumber: true })}
+              {...register('number')}
             />
             <Input
               placeholder="Complemento"
-              type="number"
+              optional
               containerProps={{ style: { gridArea: 'fullAdress' } }}
-              {...register('cep', { valueAsNumber: true })}
+              {...register('fullAdress')}
             />
             <Input
               placeholder="Bairro"
-              type="number"
               containerProps={{ style: { gridArea: 'neighborhood' } }}
-              {...register('cep', { valueAsNumber: true })}
+              {...register('neighborhood')}
             />
             <Input
               placeholder="Cidade"
-              type="number"
               containerProps={{ style: { gridArea: 'city' } }}
-              {...register('cep', { valueAsNumber: true })}
+              {...register('city')}
             />
             <Input
               placeholder="UF"
-              type="number"
               containerProps={{ style: { gridArea: 'state' } }}
-              {...register('cep', { valueAsNumber: true })}
+              {...register('state')}
             />
           </AdressForm>
         </AdressContainer>

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { fonts } from '../../styles/typography'
 
 export const Container = styled.div`
   display: flex;
@@ -15,6 +16,14 @@ export const Container = styled.div`
 
     transition: all 0.2s;
 
+    &[data-state='focused'] {
+      border-color: ${({ theme }) => theme['yellow-dark']};
+    }
+
+    &[data-state='blurred'] {
+      border-color: ${({ theme }) => theme['base-button']};
+    }
+
     input {
       color: ${({ theme }) => theme['base-text']};
       width: 100%;
@@ -28,4 +37,9 @@ export const Container = styled.div`
       }
     }
   }
+`
+export const ErrorMessage = styled.p`
+  color: red;
+  font-weight: 400;
+  ${fonts.textXS}
 `
