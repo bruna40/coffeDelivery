@@ -1,6 +1,6 @@
 import expresso from '../../assets/coffeImagens/expresso.png'
 import leite from '../../assets/coffeImagens/cafe-com-Leite.png'
-import { Minus, Plus, Trash } from '@phosphor-icons/react'
+import { Trash } from '@phosphor-icons/react'
 import {
   ContainerInfo,
   Button,
@@ -10,7 +10,7 @@ import {
   NumberCoffe,
 } from './style'
 import { Fragment } from 'react'
-import { Buttons } from '../Card/style'
+import { InputQuantity } from '../Card/InputQuanty'
 
 export function InfoCoffes() {
   return (
@@ -24,15 +24,7 @@ export function InfoCoffes() {
               <div>
                 <span>Expresso Tradicional</span>
                 <NumberCoffe>
-                  <Buttons>
-                    <button>
-                      <Minus size={14} />
-                    </button>
-                    <span>2</span>
-                    <button>
-                      <Plus size={14} />
-                    </button>
-                  </Buttons>
+                  <InputQuantity />
                   <button>
                     <Trash />
                     <span>Remover</span>
@@ -51,15 +43,7 @@ export function InfoCoffes() {
               <div>
                 <span>Leite</span>
                 <NumberCoffe>
-                  <Buttons>
-                    <button>
-                      <Minus size={14} />
-                    </button>
-                    <span>2</span>
-                    <button>
-                      <Plus size={14} />
-                    </button>
-                  </Buttons>
+                  <InputQuantity />
                   <button>
                     <Trash />
                     <span>Remover</span>
