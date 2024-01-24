@@ -1,6 +1,10 @@
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
 
-interface CoffeContext {}
+interface CoffeContext {
+  quantyCoffee: number
+  handleQuantyCoffeMinus: () => void
+  handleQuantyCoffePlus: () => void
+}
 
 interface CoffeContextProviderProps {
   children: React.ReactNode
@@ -9,5 +13,22 @@ interface CoffeContextProviderProps {
 export const CoffeContext = createContext({} as CoffeContext)
 
 export function CoffeProvider({ children }: CoffeContextProviderProps) {
-  return <CoffeContext.Provider value={{}}>{children}</CoffeContext.Provider>
+  const [quantyCoffee, setQuantyCoffe] = useState(0)
+
+  function handleQuantyCoffePlus() {
+    setQuantyCoffe(quantyCoffee + 1)
+  }
+
+  function handleQuantyCoffeMinus() {
+    if (quantyCoffee > 0) {
+      setQuantyCoffe(quantyCoffee - 1)
+    }
+  }
+  return (
+    <CoffeContext.Provider
+      value={{ quantyCoffee, handleQuantyCoffeMinus, handleQuantyCoffePlus }}
+    >
+      {children}
+    </CoffeContext.Provider>
+  )
 }
