@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useReducer, useState } from 'react'
 
 interface CoffeContext {
   quantyCoffee: number
@@ -13,16 +13,27 @@ interface CoffeContextProviderProps {
 export const CoffeContext = createContext({} as CoffeContext)
 
 export function CoffeProvider({ children }: CoffeContextProviderProps) {
+  const [cartCoffe, dispatch] = useReducer((state: any, action: any) => {}, {})
   const [quantyCoffee, setQuantyCoffe] = useState(0)
 
   function handleQuantyCoffePlus() {
-    setQuantyCoffe(quantyCoffee + 1)
+    dispatch()
   }
 
   function handleQuantyCoffeMinus() {
-    if (quantyCoffee > 0) {
-      setQuantyCoffe(quantyCoffee - 1)
-    }
+    dispatch()
+  }
+
+  function addCoffe() {
+    dispatch()
+  }
+
+  function removeCoffe() {
+    dispatch()
+  }
+
+  function checkoutCart() {
+    dispatch()
   }
   return (
     <CoffeContext.Provider

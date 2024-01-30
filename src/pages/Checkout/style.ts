@@ -25,7 +25,7 @@ export const Info = styled.div`
   }
 `
 
-export const AdressContainer = styled.form`
+export const AdressContainer = styled.div`
   padding: 2.5rem;
   border-radius: 6px;
   background-color: ${({ theme }) => theme['base-card']};
@@ -56,9 +56,39 @@ export const AdressForm = styled.div`
   grid-template-areas:
     'cep . .'
     'street street street'
-    'number fullAdress fullAdress'
+    'number fullAddress fullAddress'
     'neighborhood city state';
 
   grid-template-columns: 12.5rem 1fr 3.75rem;
   grid-gap: 1rem 0.75rem;
+`
+export const ContainerPayment = styled.div`
+  padding: 2.5rem;
+  border-radius: 6px;
+  background-color: ${({ theme }) => theme['base-card']};
+  width: 100%;
+  min-width: 40rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`
+export const TextPayment = styled.div`
+  display: flex;
+  gap: 0.5rem;
+
+  svg {
+    color: ${({ theme }) => theme.purple};
+  }
+
+  span {
+    color: ${({ theme }) => theme['base-subtitle']};
+  }
+  p {
+    ${fonts.textS}
+  }
+`
+export const TypePayment = styled.div`
+  display: flex;
+  gap: 0.5rem;
 `

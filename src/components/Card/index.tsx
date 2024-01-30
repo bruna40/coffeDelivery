@@ -17,10 +17,14 @@ interface CoffeeProps {
 
 export function Card({ coffee }: CoffeeProps) {
   const [haveItem, setHaveItem] = useState(false)
+  const [quantity, setQuantity] = useState(0)
+
   const themes = useTheme()
+
   function handleAddItem() {
     setHaveItem(!haveItem)
   }
+
   return (
     <ContainerCard>
       <img src={coffee.imagem} alt={coffee.nome} />

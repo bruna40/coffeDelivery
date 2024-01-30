@@ -69,7 +69,9 @@ export function InfoCoffes() {
             <span>R$ 8.00</span>
           </div>
         </TotalPayment>
-        <Button>Confirmar pedido</Button>
+        <Button type="submit" form="order">
+          Confirmar pedido
+        </Button>
       </InfoPayment>
     </ContainerInfo>
   )
