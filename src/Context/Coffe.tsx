@@ -1,9 +1,13 @@
-import { createContext, useReducer, useState } from 'react'
+import { createContext, useReducer } from 'react'
+import { Item, OrderForm, cartReducer } from '../reducers/reducer'
+import { addCoffeAction } from '../reducers/actions'
 
 interface CoffeContext {
-  quantyCoffee: number
+  addCoffe: (item: Item) => void
   handleQuantyCoffeMinus: () => void
   handleQuantyCoffePlus: () => void
+  cart: Item[]
+  orders: OrderForm[]
 }
 
 interface CoffeContextProviderProps {
@@ -13,31 +17,48 @@ interface CoffeContextProviderProps {
 export const CoffeContext = createContext({} as CoffeContext)
 
 export function CoffeProvider({ children }: CoffeContextProviderProps) {
-  const [cartCoffe, dispatch] = useReducer((state: any, action: any) => {}, {})
-  const [quantyCoffee, setQuantyCoffe] = useState(0)
+  const [coffeState, dispatch] = useReducer(
+    cartReducer,
+    {
+      cart: [],
+      orders: [],
+    },
+    (coffeState) => {
+      return coffeState
+    },
+  )
+
+  const { cart, orders } = coffeState
 
   function handleQuantyCoffePlus() {
-    dispatch()
+    console.log('teste')
   }
 
   function handleQuantyCoffeMinus() {
-    dispatch()
-  }
-
-  function addCoffe() {
-    dispatch()
+    console.log('teste')
   }
 
   function removeCoffe() {
-    dispatch()
+    console.log('teste')
   }
 
   function checkoutCart() {
-    dispatch()
+    console.log('teste')
   }
+
+  function addCoffe(item: Item) {
+    dispatch(addCoffeAction(item))
+  }
+
   return (
     <CoffeContext.Provider
-      value={{ quantyCoffee, handleQuantyCoffeMinus, handleQuantyCoffePlus }}
+      value={{
+        handleQuantyCoffeMinus,
+        handleQuantyCoffePlus,
+        addCoffe,
+        cart,
+        orders,
+      }}
     >
       {children}
     </CoffeContext.Provider>

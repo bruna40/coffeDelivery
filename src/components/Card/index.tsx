@@ -3,10 +3,12 @@ import { useTheme } from 'styled-components'
 import { ContainerCard, Tags, Price, Control, Order } from './style'
 
 import { InputQuantity } from './InputQuanty'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { CoffeContext } from '../../Context/Coffe'
 
 interface CoffeeProps {
   coffee: {
+    id: string
     imagem: string
     nome: string
     tag: string[]
@@ -17,12 +19,24 @@ interface CoffeeProps {
 
 export function Card({ coffee }: CoffeeProps) {
   const [haveItem, setHaveItem] = useState(false)
-  const [quantity, setQuantity] = useState(0)
-
+  const [quantityCoffee, setQuantityCoffee] = useState(1)
+  const { addCoffe } = useContext(CoffeContext)
   const themes = useTheme()
 
+  function addCoffePlus() {
+    setQuantityCoffee((state) => (state += 1))
+  }
+
+  function addCoffeMinus() {
+    if (quantityCoffee > 1) {
+      setQuantityCoffee((state) => (state -= 1))
+    }
+  }
+
   function handleAddItem() {
+    addCoffe({ id: coffee.id, quantityCoffee })
     setHaveItem(!haveItem)
+    setQuantityCoffee(1)
   }
 
   return (
@@ -41,7 +55,11 @@ export function Card({ coffee }: CoffeeProps) {
           <span>{coffee.preco.toFixed(2)}</span>
         </Price>
         <Order>
-          <InputQuantity />
+          <InputQuantity
+            quantyCoffe={quantityCoffee}
+            handleQuantyCoffeMinus={addCoffeMinus}
+            handleQuantyCoffePlus={addCoffePlus}
+          />
 
           <button onClick={handleAddItem} disabled={haveItem}>
             {haveItem ? (

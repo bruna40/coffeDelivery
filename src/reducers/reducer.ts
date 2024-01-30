@@ -1,5 +1,5 @@
 import { produce } from 'immer'
-import { ActionsType } from './actions'
+import { Actions, ActionsType } from './actions'
 import { NewOrderFormData } from '../pages/Checkout'
 
 export interface Item {
@@ -11,23 +11,23 @@ export interface OrderForm extends NewOrderFormData {
   items: Item[]
 }
 
-interface Order {
+interface OrderState {
   orders: OrderForm[]
   cart: Item[]
 }
 
-export function cartReducer(state: Order, action: any) {
+export function cartReducer(state: OrderState, action: Actions) {
   switch (action.type) {
     case ActionsType.ADD_COFFEE:
       return produce(state, (draftState) => {
-        const itemAdd = draftState.items.find(
+        const itemAdd = draftState.cart.find(
           (item) => item.id === action.payload.item.id,
         )
 
         if (itemAdd) {
           itemAdd.quantity += action.payload.item.quantity
         } else {
-          draftState.items.push(action.payload.item)
+          draftState.cart.push(action.payload.item)
         }
       })
     case ActionsType.REMOVE_COFFEE:
