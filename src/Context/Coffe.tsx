@@ -1,11 +1,17 @@
 import { createContext, useReducer } from 'react'
 import { Item, OrderForm, cartReducer } from '../reducers/reducer'
-import { addCoffeAction } from '../reducers/actions'
+import {
+  addCoffeAction,
+  incrementCoffeAction,
+  decrementCoffeAction,
+  removeCoffeAction,
+} from '../reducers/actions'
 
 interface CoffeContext {
   addCoffe: (item: Item) => void
-  handleQuantyCoffeMinus: () => void
-  handleQuantyCoffePlus: () => void
+  handleQuantyCoffeMinus: (item: Item['id']) => void
+  handleQuantyCoffePlus: (item: Item['id']) => void
+  removeCoffe: (item: Item['id']) => void
   cart: Item[]
   orders: OrderForm[]
 }
@@ -30,20 +36,16 @@ export function CoffeProvider({ children }: CoffeContextProviderProps) {
 
   const { cart, orders } = coffeState
 
-  function handleQuantyCoffePlus() {
-    console.log('teste')
+  function handleQuantyCoffePlus(ItemId: Item['id']) {
+    dispatch(incrementCoffeAction(ItemId))
   }
 
-  function handleQuantyCoffeMinus() {
-    console.log('teste')
+  function handleQuantyCoffeMinus(ItemId: Item['id']) {
+    dispatch(decrementCoffeAction(ItemId))
   }
 
-  function removeCoffe() {
-    console.log('teste')
-  }
-
-  function checkoutCart() {
-    console.log('teste')
+  function removeCoffe(ItemId: Item['id']) {
+    dispatch(removeCoffeAction(ItemId))
   }
 
   function addCoffe(item: Item) {
@@ -58,6 +60,7 @@ export function CoffeProvider({ children }: CoffeContextProviderProps) {
         addCoffe,
         cart,
         orders,
+        removeCoffe,
       }}
     >
       {children}

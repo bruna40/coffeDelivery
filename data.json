@@ -1,5 +1,5 @@
 [ {
-    "id": 0,
+    "id": "0",
     "nome": "Expresso Tradicional",
     "tag": ["Tradicional"],
     "preco": 9.9,
@@ -7,7 +7,7 @@
     "imagem": "../src/assets/expresso.png"
   },
   {
-    "id": 1,
+    "id": "1",
     "nome": "Expresso Americano",
     "tag": ["Tradicional"],
     "preco": 9.9,
@@ -15,7 +15,7 @@
     "imagem": "../src/assets/americano.png"
   },
   {
-    "id": 2,
+    "id": "2",
     "nome": "Expresso Cremoso",
     "tag": ["Tradicional"],
     "preco": 9.9,
@@ -23,7 +23,7 @@
     "imagem": "../src/assets/cremoso.png"
   },
   {
-    "id": 3,
+    "id": "3",
     "nome": "Expresso Gelado",
     "tag": ["Tradicional", "Gelado"],
     "preco": 9.9,
@@ -31,7 +31,7 @@
     "imagem": "../src/assets/cafe-gelado.png"
   },
   {
-    "id": 4,
+    "id": "4",
     "nome": "Café com Leite",
     "tag": ["Tradicional", "Com Leite"],
     "preco": 9.9,
@@ -39,7 +39,7 @@
     "imagem": "../src/assets/cafe-com-Leite.png"
   },
   {
-    "id": 5,
+    "id": "5",
     "nome": "Latte",
     "tag": ["Tradicional", "Com Leite"],
     "preco": 9.9,
@@ -47,7 +47,7 @@
     "imagem": "../src/assets/latte.png"
   },
   {
-    "id": 6,
+    "id": "6",
     "nome": "Capuccino",
     "tag": ["Tradicional", "Com Leite"],
     "preco": 9.9,
@@ -55,7 +55,7 @@
     "imagem": "../src/assets/capuccino.png"
   },
   {
-    "id": 7,
+    "id": "7",
     "nome": "Macchiato",
     "tag": ["Tradicional", "Com Leite"],
     "preco": 9.9,
@@ -63,7 +63,7 @@
     "imagem": "../src/assets/macchiato.png"
   },
   {
-    "id": 8,
+    "id": "8",
     "nome": "Mocaccino",
     "tag": ["Tradicional", "Com Leite"],
     "preco": 9.9,
@@ -71,7 +71,7 @@
     "imagem": "../src/assets/mocaccino.png"
   },
   {
-    "id": 9,
+    "id": "9",
     "nome": "Chocolate Quente",
     "tag": ["Especial", "Com Leite"],
     "preco": 9.9,
@@ -79,7 +79,7 @@
     "imagem": "../src/assets/chocolate-quente.png"
   },
   {
-    "id": 10,
+    "id": "10",
     "nome": "Cubano",
     "tag": ["Especial", "Alcoólico", "Gelado"],
     "preco": 9.9,
@@ -87,7 +87,7 @@
     "imagem": "../src/assets/cubano.png"
   },
   {
-    "id": 11,
+    "id": "11",
     "nome": "Havaiano",
     "tag": ["Especial"],
     "preco": 9.9,
@@ -95,7 +95,7 @@
     "imagem": "../src/assets/havaiano.png"
   },
   {
-    "id": 12,
+    "id": "12",
     "nome": "Árabe",
     "tag": ["Especial"],
     "preco": 9.9,
@@ -103,7 +103,7 @@
     "imagem": "../src/assets/arabe.png"
   },
   {
-    "id": 13,
+    "id": "13",
     "nome": "Irlandês",
     "tag": ["Especial", "Alcoólico"],
     "preco": 9.9,

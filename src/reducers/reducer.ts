@@ -4,7 +4,7 @@ import { NewOrderFormData } from '../pages/Checkout'
 
 export interface Item {
   id: string
-  quantity: number
+  quantityCoffee: number
 }
 export interface OrderForm extends NewOrderFormData {
   id: number
@@ -25,37 +25,34 @@ export function cartReducer(state: OrderState, action: Actions) {
         )
 
         if (itemAdd) {
-          itemAdd.quantity += action.payload.item.quantity
+          itemAdd.quantityCoffee += action.payload.item.quantityCoffee
         } else {
           draftState.cart.push(action.payload.item)
         }
       })
-    case ActionsType.REMOVE_COFFEE:
-      return produce(state, (draftState) => {
-        draftState.cart = draftState.cart.filter(
-          (coffee) => coffee.id !== action.payload.id,
-        )
-      })
+
     case ActionsType.INCREMENT_COFFEE:
       return produce(state, (draftState) => {
         const coffee = draftState.cart.find(
-          (coffee) => coffee.id === action.payload.id,
+          (coffee) => coffee.id === action.payload.itemId,
         )
-        if (coffee) coffee.quantity++
+        if (coffee?.id) coffee.quantityCoffee += 1
       })
     case ActionsType.DECREMENT_COFFEE:
       return produce(state, (draftState) => {
         const coffee = draftState.cart.find(
-          (coffee) => coffee.id === action.payload.id,
+          (coffee) => coffee.id === action.payload.itemId,
         )
-        if (coffee) coffee.quantity--
+        if (coffee?.id && coffee.quantityCoffee > 1) coffee.quantityCoffee -= 1
       })
-    case ActionsType.CHECK_COFFEE:
+
+    case ActionsType.REMOVE_COFFEE:
       return produce(state, (draftState) => {
-        const coffee = draftState.cart.find(
-          (coffee) => coffee.id === action.payload.id,
+        const deleteItem = draftState.cart.findIndex(
+          (coffee) => coffee.id !== action.payload.itemId,
         )
-        if (coffee) coffee.checked = !coffee.checked
+
+        draftState.cart.splice(deleteItem, 1)
       })
     default:
       return state
