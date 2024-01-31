@@ -41,7 +41,7 @@ export function Card({ coffee }: CoffeeProps) {
   const priceCoffes = coffee.preco * quantityCoffee
 
   return (
-    <ContainerCard>
+    <ContainerCard data-test={`${coffee.nome}`}>
       <img src={coffee.imagem} alt={coffee.nome} />
       <Tags>
         {coffee.tag.map((value) => (
@@ -60,9 +60,16 @@ export function Card({ coffee }: CoffeeProps) {
             quantyCoffe={quantityCoffee}
             handleQuantyCoffeMinus={addCoffeMinus}
             handleQuantyCoffePlus={addCoffePlus}
+            dataTestMin={`min-${coffee.id}`}
+            dataTestQuanty={`quanty-${coffee.id}`}
+            dataTestPlus={`max-${coffee.id}`}
           />
 
-          <button onClick={handleAddItem} disabled={haveItem}>
+          <button
+            onClick={handleAddItem}
+            disabled={haveItem}
+            data-test={`cart-button-${coffee.id}`}
+          >
             {haveItem ? (
               <CheckFat size={22} color={themes['base-card']} weight="fill" />
             ) : (

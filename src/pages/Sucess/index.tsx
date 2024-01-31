@@ -23,7 +23,7 @@ export function Sucess() {
     return null
   }
   return (
-    <ContainerSucess>
+    <ContainerSucess data-test="order-sucess">
       <Details>
         <TextTitle>
           <h2>Uhu! Pedido confirmado</h2>

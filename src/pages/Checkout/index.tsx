@@ -93,7 +93,7 @@ export function Checkout() {
 
   const methodPayment = watch('paymentMethod')
   return (
-    <ContainerCheckout>
+    <ContainerCheckout data-test="checkout">
       <Info>
         <h2>Complete seu pedido</h2>
         <form onSubmit={handleSubmit(handleCreateOrder)} id="order">
@@ -112,18 +112,21 @@ export function Checkout() {
                 containerProps={{ style: { gridArea: 'cep' } }}
                 {...register('cep', { valueAsNumber: true })}
                 error={errors.cep}
+                data-test="cep-input"
               />
               <Input
                 placeholder="Rua"
                 containerProps={{ style: { gridArea: 'street' } }}
                 {...register('street')}
                 error={errors.street}
+                data-test="street-input"
               />
               <Input
                 placeholder="Número"
                 containerProps={{ style: { gridArea: 'number' } }}
                 {...register('number')}
                 error={errors.number}
+                data-test="number-input"
               />
               <Input
                 placeholder="Complemento"
@@ -131,24 +134,28 @@ export function Checkout() {
                 containerProps={{ style: { gridArea: 'fullAddress' } }}
                 {...register('fullAddress')}
                 error={errors.fullAddress}
+                data-test="fullAdress-input"
               />
               <Input
                 placeholder="Bairro"
                 containerProps={{ style: { gridArea: 'neighborhood' } }}
                 {...register('neighborhood')}
                 error={errors.neighborhood}
+                data-test="neighborhood-input"
               />
               <Input
                 placeholder="Cidade"
                 containerProps={{ style: { gridArea: 'city' } }}
                 {...register('city')}
                 error={errors.city}
+                data-test="city-input"
               />
               <Input
                 placeholder="UF"
                 containerProps={{ style: { gridArea: 'state' } }}
                 {...register('state')}
                 error={errors.state}
+                data-test="state-input"
               />
             </AdressForm>
           </AdressContainer>
@@ -169,6 +176,7 @@ export function Checkout() {
                 {...register('paymentMethod')}
                 value="credit"
                 isSelected={methodPayment === 'credit'}
+                data-test="payment-method-credit"
               >
                 <CreditCard size={16} />
                 <span>Cartão de crédito</span>
@@ -178,6 +186,7 @@ export function Checkout() {
                 {...register('paymentMethod')}
                 value="debit"
                 isSelected={methodPayment === 'debit'}
+                data-test="payment-method-debit"
               >
                 <Bank size={16} />
                 <span>Cartão de débito</span>
@@ -188,6 +197,7 @@ export function Checkout() {
                 {...register('paymentMethod')}
                 value="cash"
                 isSelected={methodPayment === 'cash'}
+                data-test="payment-method-cash"
               >
                 <Money size={16} />
                 <span>Dinheiro</span>
@@ -215,6 +225,9 @@ export function Checkout() {
                         handleQuantyCoffePlus={() =>
                           handleQuantyCoffePlus(coffe.id)
                         }
+                        dataTestMin={`min-${coffe.id}`}
+                        dataTestQuanty={`quanty-${coffe.id}`}
+                        dataTestPlus={`max-${coffe.id}`}
                       />
                       <button onClick={() => removeCoffe(coffe.id)}>
                         <Trash />
@@ -259,7 +272,7 @@ export function Checkout() {
               </span>
             </div>
           </TotalPayment>
-          <ButtonFinished type="submit" form="order">
+          <ButtonFinished type="submit" form="order" data-test="finish-order">
             Confirmar pedido
           </ButtonFinished>
         </InfoPayment>

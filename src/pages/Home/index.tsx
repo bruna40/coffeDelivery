@@ -17,11 +17,13 @@ export function Home() {
   const themes = useTheme()
   return (
     <main>
-      <ContainerIntroduction>
+      <ContainerIntroduction data-test="home">
         <Introduction>
           <div>
             <Text>
-              <h1>Encontre o café perfeito para qualquer hora do dia</h1>
+              <h1 data-test="title">
+                Encontre o café perfeito para qualquer hora do dia
+              </h1>
               <p>
                 Com o Coffe Delivery você recebe seu café onde estiver, a
                 qualquer hora
