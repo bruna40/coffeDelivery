@@ -2,9 +2,26 @@ import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
 import logo from '../../assets/logo-sucess.svg'
 import { useTheme } from 'styled-components'
 import { ContainerSucess, Details, TextTitle, Info, InfoContent } from './style'
+import { useContext } from 'react'
+import { CoffeContext } from '../../Context/Coffe'
+import { useParams } from 'react-router-dom'
 
 export function Sucess() {
   const theme = useTheme()
+
+  const { orders } = useContext(CoffeContext)
+  const { orderId } = useParams()
+
+  const order = orders.find((order) => order.id === Number(orderId))
+
+  const paymentMethod = {
+    credit: 'Cartão de crédito',
+    debit: 'Cartão de débito',
+    cash: 'Dinheiro',
+  }
+  if (!order?.id) {
+    return null
+  }
   return (
     <ContainerSucess>
       <Details>
@@ -18,9 +35,14 @@ export function Sucess() {
               <MapPin size={32} style={{ backgroundColor: theme.purple }} />
               <div>
                 <span>
-                  Entrega em <strong>Rua Julio Verne, 1012</strong>
+                  Entrega em{' '}
+                  <strong>
+                    {order.street}, {order.number}
+                  </strong>
                 </span>
-                <span>Serrinha - Fortaleza - CE</span>
+                <span>
+                  {order.neighborhood} - {order.city} - {order.state}
+                </span>
               </div>
             </li>
             <li>
@@ -37,7 +59,7 @@ export function Sucess() {
               />
               <div>
                 <span>Pagamento na entrega</span>
-                <strong>Cartão de Crédito</strong>
+                <strong>{paymentMethod[order.paymentMethod]}</strong>
               </div>
             </li>
           </InfoContent>

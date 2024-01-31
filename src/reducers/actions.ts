@@ -1,3 +1,5 @@
+import { NavigateFunction } from 'react-router-dom'
+import { NewOrderFormData } from '../pages/Checkout'
 import { Item } from './reducer'
 
 export enum ActionsType {
@@ -22,6 +24,13 @@ export type Actions =
         | ActionsType.REMOVE_COFFEE
       payload: {
         itemId: Item['id']
+      }
+    }
+  | {
+      type: ActionsType.CHECK_COFFEE
+      payload: {
+        order: NewOrderFormData
+        callback: NavigateFunction
       }
     }
 
@@ -57,6 +66,19 @@ export function removeCoffeAction(itemId: Item['id']) {
     type: ActionsType.REMOVE_COFFEE,
     payload: {
       itemId,
+    },
+  } satisfies Actions
+}
+
+export function checkCoffeAction(
+  order: NewOrderFormData,
+  callback: NavigateFunction,
+) {
+  return {
+    type: ActionsType.CHECK_COFFEE,
+    payload: {
+      order,
+      callback,
     },
   } satisfies Actions
 }

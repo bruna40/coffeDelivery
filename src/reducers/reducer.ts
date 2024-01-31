@@ -54,6 +54,18 @@ export function cartReducer(state: OrderState, action: Actions) {
 
         draftState.cart.splice(deleteItem, 1)
       })
+    case ActionsType.CHECK_COFFEE:
+      return produce(state, (draftState) => {
+        const newOrder = {
+          ...action.payload.order,
+          id: new Date().getTime(),
+          items: draftState.cart,
+        }
+        draftState.orders.push(newOrder)
+        draftState.cart = []
+
+        action.payload.callback(`/order/${newOrder.id}/sucess`)
+      })
     default:
       return state
   }
