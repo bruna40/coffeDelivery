@@ -35,9 +35,10 @@ export function Card({ coffee }: CoffeeProps) {
 
   function handleAddItem() {
     addCoffe({ id: coffee.id, quantityCoffee })
-    setHaveItem(!haveItem)
-    setQuantityCoffee(1)
+    setHaveItem((state) => !state)
   }
+
+  const priceCoffes = coffee.preco * quantityCoffee
 
   return (
     <ContainerCard>
@@ -52,7 +53,7 @@ export function Card({ coffee }: CoffeeProps) {
       <Control>
         <Price>
           <span>R$</span>
-          <span>{coffee.preco.toFixed(2)}</span>
+          <strong>{priceCoffes.toFixed(2)}</strong>
         </Price>
         <Order>
           <InputQuantity
